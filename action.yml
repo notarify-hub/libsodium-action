@@ -2,6 +2,9 @@
 name: 'Encrypt secret'
 description: 'Build a secret using Libsodium tool'
 inputs:
+  public-key:
+    description: 'A base 64 public key'
+    required: true
   secret-input:  # id of input
     description: 'Text plain to secret'
     required: true
@@ -12,5 +15,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.public-key }}
     - ${{ inputs.secret-input }}
 
