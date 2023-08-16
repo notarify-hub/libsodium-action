@@ -1,0 +1,16 @@
+# action.yml
+name: 'Encrypt secret'
+description: 'Build a secret using Libsodium tool'
+inputs:
+  secret-input:  # id of input
+    description: 'Text plain to secret'
+    required: true
+outputs:
+  secret-output: # id of output
+    description: 'The secret encrypted by libsodium'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.secret-input }}
+
